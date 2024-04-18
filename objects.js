@@ -27,9 +27,31 @@ function countWords(phrase) {
 
 };
 
-console.log(countWords("You with a space love You with a space kkk hhh"));
+// console.log(countWords("You with a space love You with a space kkk hhh"));
 
 // 2. getMelonsAtPrice
 function getMelonsAtPrice(price) {
-  // Replace this with your code
+  // Return the list of melons that cost `price`.
+
+  // Arguments:
+  //     price (float)
+
+  // Returns:
+  //    list: List of melons that cost `price`
+  //    None: If there are no melons that cost `price`
+
+  const melonPrices = {
+    2.50: ['Cantaloupe', 'Honeydew'],
+    2.95: ['Watermelon'],
+    3.25: ['Musk', 'Crenshaw'],
+    14.25: ['Christmas']
+  };
+
+  if (price in melonPrices ) {
+    return melonPrices[price].sort();  
+  };    
+
+  return null;
 }
+
+console.log(getMelonsAtPrice(1));
