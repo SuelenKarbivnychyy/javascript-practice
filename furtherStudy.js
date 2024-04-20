@@ -34,8 +34,6 @@ function wordsInCommon(words1, words2) {
 function kidsGame(names) {
   
   let output = names.splice(0, 1);
-  // console.log(` output variable type: ${typeof(output)}`);
-  // console.log(`output variable type: ${typeof([])}`);
   
   const firstLetterToWords = {}
 
@@ -49,28 +47,32 @@ function kidsGame(names) {
     };    
   };
 
-  const hasWordsLeft = true;
 
-  let lastItem = output.slice(-1);
+  let hasWordsLeft = true;
 
-  // #TODO: gete the last char of the last element of output array
-  // let startLetter = lastItem.length ;
-  // console.log(lastItem);
-  // console.log(typeof(lastItem));
+  while (hasWordsLeft) {
 
-  // console.log(` start letter value: ${startLetter} `);
-
-  // while (hasWordsLeft) {
+    let lastItem = output[output.length -1];
+    let startLetter = lastItem.slice(-1) ;
     
-  //   let startLetter = output.slice(-1);
+    if (startLetter in firstLetterToWords) {
+      const word = firstLetterToWords[startLetter].shift();
 
-  // }
+      if (word === undefined) {
+        hasWordsLeft = false;
+      } else {
+        output.push(word);
+      }
+
+    } else {
+      hasWordsLeft = false;
+    };
+
+  }; 
   
-
+  return output;
 
 }
 
-kidsGame(["bagon", "baltoy", "yamask", "starly", "nosepass", "kalob", "nicky", "booger"]);
-
-
+console.log(kidsGame(["bagon", "baltoy", "yamask", "starly", "nosepass", "kalob", "nicky", "booger"]));
 
